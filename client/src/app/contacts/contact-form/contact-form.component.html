@@ -1,0 +1,67 @@
+<!-- <script>
+  $(contact).ready(function() {
+    $('select').material_select();
+  });
+
+</script> -->
+
+<h4>Add/Edit Contact</h4>
+
+<form class="example-form" #f="ngForm" (ngSubmit)="actionContact(f)" style="margin: 10px;">
+
+  <input type="hidden" id="disabled" name="id" [(ngModel)]="contact.id">
+
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Name" id="nome" name="name" [(ngModel)]="contact.name" required>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput id="email" placeholder="Email" name="email" [(ngModel)]="contact.email" required email>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput id="phone" placeholder="Phone" name="phone" [(ngModel)]="contact.phone" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput id="address" placeholder="Address" name="address" [(ngModel)]="contact.address">
+  </mat-form-field>
+  <!-- <div >
+      <div class=" ">
+          <select id="sex">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+          </select>
+          <label for="sex" >Materialize Select</label>
+        </div>
+    </div> -->
+
+  <mat-form-field>
+    <input matInput id="obs" placeholder="Observation" name="obs" [(ngModel)]="contact.obs">
+  </mat-form-field>
+
+  <div fxLayout="row">
+    <button mat-mini-fab color="primary" class="send-button" type="submit" name="action" [disabled]="!f.valid">
+      <mat-icon>send</mat-icon>
+    </button>
+
+    <button mat-mini-fab class="fav-button" type="button" color="primary" (click)="fav(contact.id)" style="color: gold; margin-left: 10px;">
+      <mat-icon>{{contact.fav ?'star' : 'star_border'}}</mat-icon>
+    </button>
+
+    <button mat-mini-fab class="delete-button" [disabled]="!f.valid" type="button" (click)="removeContact(contact.id)"
+      style="background-color: red; margin-left: 10px;">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+
+  <!-- <div fxLayoutAlign="end">
+    <a style="color: black;">
+      <i class="material-icons">{{contact.fav ?'star' : 'star_border'}}</i>
+    </a>
+  </div> -->
+
+
+</form>

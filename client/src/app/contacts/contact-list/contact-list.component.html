@@ -1,0 +1,70 @@
+<mat-sidenav-container style="min-height: calc(100vh - 64px)">
+
+  <mat-sidenav-content class="mat-elevation-z8">
+    
+    <h3 fxLayoutAlign="center" style="color: #3f51b5; font-family:  Roboto,'Helvetica Neue',sans-serif;">
+      Contact List
+    </h3>
+    
+    <mat-table #table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef mat-sort-header > Email </mat-header-cell>
+        <mat-cell *matCellDef="let element" > {{element.email}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="phone">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Phone </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.phone}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="address">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Address </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="obs">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Obsevation </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.obs}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="fav">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Favorite </mat-header-cell>
+        <mat-cell *matCellDef="let element">
+          <div>
+            <a style="color: gold;">
+              <i class="material-icons">{{element.fav ?'star' : 'star_border'}}</i>
+            </a>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="detail(sidenav, row.id)"></mat-row>
+    </mat-table>
+    
+    <a mat-fab color="primary" class="add-button" (click)="action(sidenav)">
+      <mat-icon>add</mat-icon>
+    </a>
+
+  </mat-sidenav-content>
+    
+  <mat-sidenav #sidenav class="example-sidenav" [disableClose]='true'>
+    <router-outlet></router-outlet>
+    <a mat-mini-fab color="primary" class="close-button" (click)="action(sidenav)">
+        <mat-icon>close</mat-icon>
+    </a>
+  </mat-sidenav>
+
+
+</mat-sidenav-container>

@@ -1,0 +1,14 @@
+
+a {
+    color: white !important;
+}
+
+a:hover {
+    background-color: darkblue !important;
+    border-radius: 8px; 
+}
+
+.element {
+    /* flex: 1 1 auto; */
+    padding: 16px;
+}

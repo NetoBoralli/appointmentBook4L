@@ -1,0 +1,41 @@
+<div fxLayoutAlign="center">
+  <mat-card class="middle-width">
+      <button mat-mini-fab color="basic" routerLink="">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+    <mat-card-title fxLayoutAlign="center">
+      <h3 style="color: #3f51b5; font-family:  Roboto,'Helvetica Neue',sans-serif;">Create your account</h3>
+    </mat-card-title>
+    <mat-card-content class="full-width">
+      <form class="example-form" #f="ngForm" (ngSubmit)="createAccount(f)" fxLayoutAlign="center" style="margin-top: 5%;">
+
+        <div fxLayout="column" style="width: 30%">
+
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Username" id="nome" name="username" ngModel required>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="password" placeholder="Password" name="password" (keyup)="validatePassword()" [(ngModel)]="password"
+              required>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="password" placeholder="Confirm Password" name="confirmPassword" (keyup)="validatePassword()" [(ngModel)]="confirmPassword"
+              required>
+          </mat-form-field>
+
+          <div *ngIf="!equal">
+            <p style="color: red">Passwords don't match!</p>
+          </div>
+
+          <div *ngIf="!exists">
+            <p style="color: red">User already exists!</p>
+          </div>
+
+          <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid || !equal" style="width: 40%">Create Account</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

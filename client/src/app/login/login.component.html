@@ -1,0 +1,30 @@
+<div fxLayoutAlign="center">
+  <mat-card class="middle-width">
+    <mat-card-title fxLayoutAlign="center">
+      <h3 style="color: #3f51b5; font-family:  Roboto,'Helvetica Neue',sans-serif;">Appointment Book</h3>
+    </mat-card-title>
+    <mat-card-content class="full-width">
+      <form class="full-width" #f="ngForm" (ngSubmit)="login(f)" fxLayoutAlign="center" >
+        <div fxLayout="column" style="width: 30%">
+
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Username" id="nome" name="username" ngModel required>
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <input matInput type="password" id="password" placeholder="Password" name="password" ngModel required>
+          </mat-form-field>
+
+          <div *ngIf="!logged">
+            <p style="color: red">Incorrect username or password</p>
+          </div>
+
+          <div fxLayout="row">
+            <button mat-raised-button color="primary" type="submit" [disabled]="!f.valid" style="width: 40%">Login</button>
+            <button mat-raised-button color="primary" routerLink="/singup" [disabled]="f.valid" style="width: 40%; margin-left: 20%;">Sing in</button>
+          </div>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
